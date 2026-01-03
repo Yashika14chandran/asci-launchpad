@@ -24,7 +24,7 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+1 (555) 123-4567",
+    value: "+91 82209 24790",
     description: "Mon-Fri, 9am-6pm IST",
   },
   {
@@ -202,7 +202,7 @@ export default function ContactPage() {
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          placeholder="+1 (555) 123-4567"
+                          placeholder="+91 82209 24790"
                           className="bg-background"
                         />
                       </div>
