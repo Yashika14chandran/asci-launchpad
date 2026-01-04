@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X, Shield } from "lucide-react";
+import { Menu, X, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
@@ -20,18 +20,20 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-effect">
       <nav className="container-wide">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <div className="relative">
-              <Shield className="h-10 w-10 text-primary transition-all duration-300 group-hover:scale-110" />
+              <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300">
+                <Terminal className="h-5 w-5 text-primary" />
+              </div>
               <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div className="flex flex-col">
-              <span className="font-heading font-bold text-xl tracking-wider text-foreground">
+              <span className="font-heading font-bold text-lg tracking-wider text-foreground">
                 ASCI
               </span>
-              <span className="text-xs text-primary tracking-widest">
+              <span className="text-[10px] text-primary font-mono tracking-widest uppercase">
                 ACADEMY
               </span>
             </div>
@@ -43,27 +45,30 @@ export default function Header() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${
+                className={`px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg relative ${
                   location.pathname === link.path
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {link.name}
+                {location.pathname === link.path && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary" />
+                )}
               </Link>
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button variant="hero" size="lg" asChild>
+            <Button variant="htb" size="default" asChild>
               <Link to="/contact">Get Started</Link>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-foreground"
+            className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
@@ -77,7 +82,7 @@ export default function Header() {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <div className="lg:hidden py-4 border-t border-border/50 animate-fade-in-up">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
@@ -85,7 +90,7 @@ export default function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`px-4 py-3 text-sm font-medium transition-all duration-300 rounded-lg ${
                     location.pathname === link.path
-                      ? "text-primary bg-primary/10"
+                      ? "text-primary bg-primary/5 border-l-2 border-primary"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                   }`}
                 >
@@ -93,7 +98,7 @@ export default function Header() {
                 </Link>
               ))}
               <div className="pt-4 px-4">
-                <Button variant="hero" size="lg" className="w-full" asChild>
+                <Button variant="htb" size="lg" className="w-full" asChild>
                   <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
                     Get Started
                   </Link>

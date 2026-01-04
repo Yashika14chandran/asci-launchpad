@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Shield, Mail, MapPin, Phone, Linkedin, Twitter, Youtube } from "lucide-react";
+import { Terminal, Mail, MapPin, Phone, Linkedin, Twitter, Youtube, Github } from "lucide-react";
 
 const footerLinks = {
   explore: [
@@ -21,18 +21,20 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-background border-t border-border">
-      <div className="container-wide section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="bg-card border-t border-border">
+      <div className="container-wide py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <Shield className="h-10 w-10 text-primary" />
+              <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
+                <Terminal className="h-5 w-5 text-primary" />
+              </div>
               <div className="flex flex-col">
-                <span className="font-heading font-bold text-xl tracking-wider text-foreground">
+                <span className="font-heading font-bold text-lg tracking-wider text-foreground">
                   ASCI
                 </span>
-                <span className="text-xs text-primary tracking-widest">
+                <span className="text-[10px] text-primary font-mono tracking-widest uppercase">
                   ACADEMY
                 </span>
               </div>
@@ -42,31 +44,27 @@ export default function Footer() {
               expert-led training, real-world skills, and industry-recognized
               certifications.
             </p>
-            <div className="flex gap-4">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-card flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-card flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-card flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
-              >
-                <Youtube className="h-5 w-5" />
-              </a>
+            <div className="flex gap-3">
+              {[
+                { icon: Linkedin, href: "#" },
+                { icon: Twitter, href: "#" },
+                { icon: Youtube, href: "#" },
+                { icon: Github, href: "#" },
+              ].map(({ icon: Icon, href }, index) => (
+                <a
+                  key={index}
+                  href={href}
+                  className="w-9 h-9 rounded-lg bg-muted/50 border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Explore Links */}
           <div>
-            <h4 className="font-heading font-semibold text-foreground mb-6">
+            <h4 className="font-heading font-semibold text-foreground mb-5 text-sm uppercase tracking-wider">
               Explore
             </h4>
             <ul className="space-y-3">
@@ -74,7 +72,7 @@ export default function Footer() {
                 <li key={link.path + link.name}>
                   <Link
                     to={link.path}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
                   >
                     {link.name}
                   </Link>
@@ -85,7 +83,7 @@ export default function Footer() {
 
           {/* Programs Links */}
           <div>
-            <h4 className="font-heading font-semibold text-foreground mb-6">
+            <h4 className="font-heading font-semibold text-foreground mb-5 text-sm uppercase tracking-wider">
               Programs
             </h4>
             <ul className="space-y-3">
@@ -93,7 +91,7 @@ export default function Footer() {
                 <li key={link.path + link.name}>
                   <Link
                     to={link.path}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
                   >
                     {link.name}
                   </Link>
@@ -104,23 +102,23 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-heading font-semibold text-foreground mb-6">
+            <h4 className="font-heading font-semibold text-foreground mb-5 text-sm uppercase tracking-wider">
               Contact
             </h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Mail className="h-5 w-5 text-primary mt-0.5" />
-                <span className="text-muted-foreground">
+                <Mail className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+                <span className="text-muted-foreground text-sm">
                   info@asciacademy.com
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="h-5 w-5 text-primary mt-0.5" />
-                <span className="text-muted-foreground">+91 82209 24790</span>
+                <Phone className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+                <span className="text-muted-foreground text-sm">+91 82209 24790</span>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-primary mt-0.5" />
-                <span className="text-muted-foreground">
+                <MapPin className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+                <span className="text-muted-foreground text-sm">
                   Online Training Platform
                 </span>
               </li>
@@ -129,15 +127,18 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
             © 2025 ASCI Academy. All rights reserved.
           </p>
-          <p className="text-muted-foreground text-sm">
-            <span className="text-primary">Secure.</span>{" "}
-            <span className="text-accent">Protect.</span>{" "}
-            <span className="text-foreground">Defend.</span>
-          </p>
+          <div className="flex items-center gap-2 text-sm">
+            <span className="font-mono text-primary">$</span>
+            <span className="text-muted-foreground">Secure</span>
+            <span className="text-border">|</span>
+            <span className="text-muted-foreground">Protect</span>
+            <span className="text-border">|</span>
+            <span className="text-muted-foreground">Defend</span>
+          </div>
         </div>
       </div>
     </footer>
