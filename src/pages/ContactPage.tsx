@@ -26,7 +26,7 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "info@asciacademy.com",
+    value: "contact@ascizen.in",
     description: "Send us an email anytime",
   },
   {

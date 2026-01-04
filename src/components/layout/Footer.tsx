@@ -32,7 +32,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="font-heading font-bold text-lg tracking-wider text-foreground">
-                  ASCI
+                  ASCI ZEN
                 </span>
                 <span className="text-[10px] text-primary font-mono tracking-widest uppercase">
                   ACADEMY
@@ -109,7 +109,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Mail className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
                 <span className="text-muted-foreground text-sm">
-                  info@asciacademy.com
+                  contact@ascizen.in
                 </span>
               </li>
               <li className="flex items-start gap-3">
