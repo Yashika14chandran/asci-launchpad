@@ -1,20 +1,19 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import SectionHeading from "@/components/shared/SectionHeading";
 import founderPortrait from "@/assets/founder-portrait.jpg";
 import ethicalHacking from "@/assets/ethical-hacking.jpg";
 import {
   ArrowRight,
   Target,
   Eye,
-  Users,
-  Award,
-  Lightbulb,
   GraduationCap,
-  Globe,
-  Shield,
   Quote,
+  Terminal,
+  Users,
+  Globe,
+  Sparkles,
+  ChevronRight,
 } from "lucide-react";
 
 const missionPoints = [
@@ -25,34 +24,48 @@ const missionPoints = [
   "Enable career growth through certifications, mentorship, and industry-aligned courses.",
 ];
 
+const timeline = [
+  { year: "2023", title: "Academy Founded", description: "ASCI Academy launched with a vision to transform cybersecurity education" },
+  { year: "2024", title: "500+ Students", description: "Reached milestone of training over 500 cybersecurity professionals" },
+  { year: "2025", title: "Global Expansion", description: "Expanding reach to serve students across multiple countries" },
+];
+
 export default function DiscoverPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-b from-card/50 to-background">
-        <div className="container-wide">
+      <section className="section-padding relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-glow opacity-40" />
+        <div className="absolute inset-0 grid-overlay opacity-20" />
+        
+        <div className="container-wide relative z-10">
           <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium tracking-wider uppercase mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-primary/10 border border-primary/30 text-primary text-xs font-mono uppercase tracking-wider mb-4">
+              <Terminal className="h-3 w-3" />
               Discover ASCI
-            </span>
+            </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
               The World Around <span className="text-gradient">ASCI</span>
             </h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Empowering the next generation of cyber defenders through expert-led training and real-world experience.
+            </p>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="section-padding">
+      <section className="section-padding bg-card/30 border-y border-border">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <SectionHeading
-                tag="About Us"
-                title="About ASCI Academy"
-                centered={false}
-              />
-              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-accent/10 border border-accent/30 text-accent text-xs font-mono uppercase tracking-wider mb-6">
+                About Us
+              </div>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
+                About ASCI Academy
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-6">
                 ASCI Academy is a premier online cybersecurity institute dedicated
                 to empowering students and professionals to secure, protect, and
                 defend digital environments. Through our structured ASCI Skill
@@ -60,37 +73,37 @@ export default function DiscoverPage() {
                 to advanced programs, including specialized micro-courses and
                 professional certification tracks.
               </p>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              <p className="text-muted-foreground leading-relaxed mb-8">
                 With expert instructors, flexible online delivery, and a
                 career-focused curriculum, ASCI Academy equips learners with the
                 knowledge and confidence to excel in the evolving world of
-                cybersecurity. Join us today and take your first step toward
-                becoming a proficient and industry-ready cybersecurity expert.
+                cybersecurity.
               </p>
-              <Button variant="hero" size="lg" asChild>
+              <Button variant="htb" size="lg" asChild>
                 <Link to="/skills" className="gap-2">
                   Explore Our Courses
-                  <ArrowRight className="h-5 w-5" />
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
             </div>
             <div className="relative">
-              <img
-                src={ethicalHacking}
-                alt="Ethical Hacking Training"
-                className="rounded-2xl shadow-2xl"
-              />
-              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-foreground/10" />
+              <div className="rounded-xl overflow-hidden border border-border">
+                <img
+                  src={ethicalHacking}
+                  alt="Ethical Hacking Training"
+                  className="w-full aspect-video object-cover"
+                />
+              </div>
               
-              {/* Floating Stats */}
-              <div className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl shadow-lg border border-border">
+              {/* Floating Stats Card */}
+              <div className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl border border-border shadow-lg">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
                     <GraduationCap className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-foreground">500+</p>
-                    <p className="text-sm text-muted-foreground">Trained Professionals</p>
+                    <p className="font-mono text-2xl font-bold text-primary">500+</p>
+                    <p className="text-xs text-muted-foreground">Trained Professionals</p>
                   </div>
                 </div>
               </div>
@@ -100,51 +113,50 @@ export default function DiscoverPage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="section-padding bg-card/30">
+      <section className="section-padding">
         <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8">
             {/* Vision */}
-            <Card variant="gradient" className="overflow-hidden">
-              <CardContent className="p-8 md:p-10">
+            <Card variant="htb" className="overflow-hidden">
+              <CardContent className="p-8">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Eye className="h-7 w-7 text-primary" />
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center">
+                    <Eye className="h-6 w-6 text-primary" />
                   </div>
-                  <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground">
+                  <h2 className="font-heading text-2xl font-bold text-foreground">
                     Our Vision
                   </h2>
                 </div>
-                <p className="text-muted-foreground text-lg leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   To ignite curiosity, empower minds, and cultivate a generation
                   of skilled cyber defenders and innovative thinkers who can
                   navigate, protect, and lead in a secure digital world. We aim
                   to foster a culture of continuous learning, ethical practice,
-                  and technological excellence, shaping leaders ready to tackle
-                  the challenges of tomorrow's cybersecurity landscape.
+                  and technological excellence.
                 </p>
               </CardContent>
             </Card>
 
             {/* Mission */}
-            <Card variant="gradient" className="overflow-hidden">
-              <CardContent className="p-8 md:p-10">
+            <Card variant="htb" className="overflow-hidden">
+              <CardContent className="p-8">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center">
-                    <Target className="h-7 w-7 text-accent" />
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center">
+                    <Target className="h-6 w-6 text-accent" />
                   </div>
-                  <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground">
+                  <h2 className="font-heading text-2xl font-bold text-foreground">
                     Our Mission
                   </h2>
                 </div>
                 <ul className="space-y-3">
                   {missionPoints.map((point, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-primary text-sm font-bold">
+                      <div className="w-5 h-5 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="text-primary text-xs font-mono font-bold">
                           {index + 1}
                         </span>
                       </div>
-                      <span className="text-muted-foreground">{point}</span>
+                      <span className="text-muted-foreground text-sm">{point}</span>
                     </li>
                   ))}
                 </ul>
@@ -154,17 +166,57 @@ export default function DiscoverPage() {
         </div>
       </section>
 
+      {/* Timeline Section */}
+      <section className="section-padding bg-card/30 border-y border-border">
+        <div className="container-wide">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-primary/10 border border-primary/30 text-primary text-xs font-mono uppercase tracking-wider mb-4">
+              <Sparkles className="h-3 w-3" />
+              Our Journey
+            </div>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+              Building the Future
+            </h2>
+          </div>
+
+          <div className="relative max-w-3xl mx-auto">
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border" />
+            
+            {timeline.map((item, index) => (
+              <div key={index} className={`relative flex items-start gap-8 mb-12 last:mb-0 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'} hidden md:block`} />
+                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-card border-2 border-primary flex items-center justify-center z-10">
+                  <div className="w-3 h-3 rounded-full bg-primary" />
+                </div>
+                <div className="flex-1 ml-12 md:ml-0">
+                  <Card variant="htb">
+                    <CardContent className="p-6">
+                      <span className="font-mono text-primary text-sm font-bold">{item.year}</span>
+                      <h3 className="font-heading font-bold text-lg text-foreground mt-1 mb-2">{item.title}</h3>
+                      <p className="text-muted-foreground text-sm">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Founder Section */}
       <section className="section-padding">
         <div className="container-wide">
-          <SectionHeading
-            tag="Leadership"
-            title="Behind ASCI Academy"
-            subtitle="Meet the visionary driving our mission to create the next generation of cyber defenders."
-          />
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-primary/10 border border-primary/30 text-primary text-xs font-mono uppercase tracking-wider mb-4">
+              Leadership
+            </div>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+              Behind ASCI Academy
+            </h2>
+          </div>
 
           <div className="max-w-4xl mx-auto">
-            <Card variant="glass" className="overflow-hidden">
+            <Card variant="htb" className="overflow-hidden">
               <CardContent className="p-0">
                 <div className="grid md:grid-cols-5 gap-0">
                   {/* Image */}
@@ -174,40 +226,38 @@ export default function DiscoverPage() {
                       alt="Yashika Chandran - Founder & CEO"
                       className="w-full h-full object-cover min-h-[300px]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/50 md:block hidden" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/80 hidden md:block" />
                   </div>
 
                   {/* Content */}
-                  <div className="md:col-span-3 p-8 md:p-10">
+                  <div className="md:col-span-3 p-8">
                     <div className="mb-6">
                       <h3 className="font-heading text-2xl font-bold text-foreground mb-1">
                         Yashika Chandran
                       </h3>
-                      <p className="text-primary font-medium">
+                      <p className="text-primary font-mono text-sm">
                         Founder & CEO, ASCI Academy
                       </p>
                     </div>
 
-                    <p className="text-muted-foreground leading-relaxed mb-6">
+                    <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
                       Yashika Chandran is a certified cybersecurity professional
                       and tech innovator dedicated to shaping the next generation
                       of digital defenders. Specializing in ethical hacking, VAPT,
                       and application security, she blends technical expertise
-                      with a passion for teaching, inspiring students and
-                      professionals to explore, learn, and excel in the cyber
-                      world.
+                      with a passion for teaching.
                     </p>
 
-                    <p className="text-muted-foreground leading-relaxed mb-8">
+                    <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
                       Driven by innovation and a mission to bridge the
                       cybersecurity skills gap, she motivates learners to turn
-                      knowledge into action, build mastery, and emerge as
-                      confident guardians of the digital landscape.
+                      knowledge into action and emerge as confident guardians
+                      of the digital landscape.
                     </p>
 
-                    <div className="relative bg-card/50 rounded-xl p-6 border border-border/50">
-                      <Quote className="absolute top-4 left-4 h-6 w-6 text-primary/30" />
-                      <p className="text-foreground italic text-lg pl-6">
+                    <div className="relative bg-muted/50 rounded-lg p-4 border border-border">
+                      <Quote className="absolute top-3 left-3 h-4 w-4 text-primary/50" />
+                      <p className="text-foreground italic text-sm pl-6">
                         "Transforming curiosity into skill, and learners into
                         digital defenders."
                       </p>
@@ -221,16 +271,16 @@ export default function DiscoverPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-card/30">
+      <section className="section-padding bg-card/30 border-t border-border">
         <div className="container-narrow text-center">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
             Ready to Join Our Community?
           </h2>
-          <p className="text-xl text-muted-foreground mb-10">
+          <p className="text-lg text-muted-foreground mb-10">
             Start your cybersecurity journey with ASCI Academy today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="xl" asChild>
+            <Button variant="htb" size="xl" asChild>
               <Link to="/contact" className="gap-2">
                 Contact Us
                 <ArrowRight className="h-5 w-5" />

@@ -5,6 +5,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
   Mail,
   Phone,
   MapPin,
@@ -12,6 +18,8 @@ import {
   Send,
   MessageSquare,
   Calendar,
+  Terminal,
+  HelpCircle,
 } from "lucide-react";
 
 const contactInfo = [
@@ -38,6 +46,33 @@ const contactInfo = [
     label: "Response Time",
     value: "Within 24 hours",
     description: "We respond promptly",
+  },
+];
+
+const faqs = [
+  {
+    question: "What courses do you offer?",
+    answer: "We offer beginner to advanced cybersecurity courses including ethical hacking, SOC operations, cloud security, VAPT, and more. Our curriculum is structured into Cyber Explorer (Beginner), Cyber Defender (Intermediate), Cyber Sentinel (Advanced), and Micro Course tracks.",
+  },
+  {
+    question: "Are the courses online?",
+    answer: "Yes! All our courses are delivered online, allowing you to learn from anywhere at your own pace. We provide flexible scheduling to accommodate students and working professionals.",
+  },
+  {
+    question: "Do I get a certificate?",
+    answer: "Yes, you'll receive industry-recognized certifications upon completing each course or pathway. Our certificates include Cyber Explorer Level, Cyber Defender Level, Cyber Sentinel Level, and Cyber Skill Booster Badges.",
+  },
+  {
+    question: "Is there career support?",
+    answer: "Absolutely! We provide comprehensive career support including resume building, mock interviews, technical round preparation, mentorship sessions, and internship assistance to help you launch your cybersecurity career.",
+  },
+  {
+    question: "What is the course duration?",
+    answer: "Course duration varies depending on the track. Our comprehensive pathways typically range from 4-12 weeks, while micro courses can be completed in 1-2 weeks. All courses are self-paced.",
+  },
+  {
+    question: "Do you offer free resources?",
+    answer: "Yes! We offer free mock interviews, technical round practice sessions, and interview confidence programs. These help you prepare for real-world cybersecurity job interviews.",
   },
 ];
 
@@ -76,18 +111,22 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-b from-card/50 to-background">
-        <div className="container-wide">
+      <section className="section-padding relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-glow opacity-40" />
+        <div className="absolute inset-0 grid-overlay opacity-20" />
+        
+        <div className="container-wide relative z-10">
           <div className="text-center">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium tracking-wider uppercase mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-primary/10 border border-primary/30 text-primary text-xs font-mono uppercase tracking-wider mb-4">
+              <Terminal className="h-3 w-3" />
               Contact Us
-            </span>
+            </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
               Get in <span className="text-gradient">Touch</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Get in touch with ASCI Academy to start your cybersecurity
               journey. We're here to help you every step of the way.
             </p>
@@ -96,32 +135,32 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="section-padding">
+      <section className="section-padding bg-card/30 border-y border-border">
         <div className="container-wide">
-          <div className="grid lg:grid-cols-5 gap-12">
+          <div className="grid lg:grid-cols-5 gap-10">
             {/* Contact Info */}
             <div className="lg:col-span-2">
               <h2 className="font-heading text-2xl font-bold text-foreground mb-6">
                 Contact Information
               </h2>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-muted-foreground mb-8 text-sm">
                 Ready to begin your cybersecurity career? Reach out to us
                 through any of the following channels.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {contactInfo.map((item, index) => (
                   <div
                     key={index}
                     className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border hover:border-primary/30 transition-all duration-300"
                   >
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <item.icon className="h-6 w-6 text-primary" />
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
+                      <item.icon className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <p className="font-medium text-foreground">{item.label}</p>
-                      <p className="text-primary font-semibold">{item.value}</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="font-medium text-foreground text-sm">{item.label}</p>
+                      <p className="text-primary font-mono text-sm">{item.value}</p>
+                      <p className="text-xs text-muted-foreground mt-1">
                         {item.description}
                       </p>
                     </div>
@@ -130,13 +169,13 @@ export default function ContactPage() {
               </div>
 
               {/* Mock Interview CTA */}
-              <Card variant="glow" className="mt-8">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                      <Calendar className="h-6 w-6 text-accent" />
+              <Card variant="neon" className="mt-6">
+                <CardContent className="p-5">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
+                      <Calendar className="h-5 w-5 text-accent" />
                     </div>
-                    <h3 className="font-heading font-semibold text-lg text-foreground">
+                    <h3 className="font-heading font-semibold text-foreground">
                       Free Mock Interview
                     </h3>
                   </div>
@@ -144,7 +183,7 @@ export default function ContactPage() {
                     Practice your interview skills with our free mock interview
                     sessions. Build confidence for technical rounds!
                   </p>
-                  <Button variant="accent" className="w-full">
+                  <Button variant="htb-outline" className="w-full" size="sm">
                     Book Your Session
                   </Button>
                 </CardContent>
@@ -153,20 +192,22 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <div className="lg:col-span-3">
-              <Card variant="gradient">
-                <CardContent className="p-8">
+              <Card variant="htb">
+                <CardContent className="p-6 md:p-8">
                   <div className="flex items-center gap-3 mb-6">
-                    <MessageSquare className="h-6 w-6 text-primary" />
-                    <h2 className="font-heading text-2xl font-bold text-foreground">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
+                      <MessageSquare className="h-5 w-5 text-primary" />
+                    </div>
+                    <h2 className="font-heading text-xl font-bold text-foreground">
                       Send Us a Message
                     </h2>
                   </div>
 
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-6">
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-sm font-medium text-foreground mb-2">
-                          Your Name *
+                          Your Name <span className="text-primary">*</span>
                         </label>
                         <Input
                           name="name"
@@ -174,12 +215,12 @@ export default function ContactPage() {
                           onChange={handleChange}
                           placeholder="John Doe"
                           required
-                          className="bg-background"
+                          className="bg-muted/50 border-border focus:border-primary"
                         />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-foreground mb-2">
-                          Email Address *
+                          Email Address <span className="text-primary">*</span>
                         </label>
                         <Input
                           name="email"
@@ -188,12 +229,12 @@ export default function ContactPage() {
                           onChange={handleChange}
                           placeholder="john@example.com"
                           required
-                          className="bg-background"
+                          className="bg-muted/50 border-border focus:border-primary"
                         />
                       </div>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 gap-6">
+                    <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-sm font-medium text-foreground mb-2">
                           Phone Number
@@ -202,13 +243,13 @@ export default function ContactPage() {
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          placeholder="+91 82209 24790"
-                          className="bg-background"
+                          placeholder="+91 XXXXX XXXXX"
+                          className="bg-muted/50 border-border focus:border-primary"
                         />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-foreground mb-2">
-                          Subject *
+                          Subject <span className="text-primary">*</span>
                         </label>
                         <Input
                           name="subject"
@@ -216,14 +257,14 @@ export default function ContactPage() {
                           onChange={handleChange}
                           placeholder="Course Inquiry"
                           required
-                          className="bg-background"
+                          className="bg-muted/50 border-border focus:border-primary"
                         />
                       </div>
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium text-foreground mb-2">
-                        Your Message *
+                        Your Message <span className="text-primary">*</span>
                       </label>
                       <Textarea
                         name="message"
@@ -232,18 +273,18 @@ export default function ContactPage() {
                         placeholder="Tell us how we can help you..."
                         rows={5}
                         required
-                        className="bg-background resize-none"
+                        className="bg-muted/50 border-border focus:border-primary resize-none"
                       />
                     </div>
 
                     <Button
-                      variant="hero"
-                      size="xl"
+                      variant="htb"
+                      size="lg"
                       type="submit"
                       className="w-full gap-2"
                     >
                       Send Message
-                      <Send className="h-5 w-5" />
+                      <Send className="h-4 w-4" />
                     </Button>
                   </form>
                 </CardContent>
@@ -254,44 +295,37 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="section-padding bg-card/30">
-        <div className="container-narrow text-center">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-muted-foreground mb-8">
-            Have questions? Check out our FAQ or reach out directly!
-          </p>
-
-          <div className="grid sm:grid-cols-2 gap-4 text-left">
-            {[
-              {
-                q: "What courses do you offer?",
-                a: "We offer beginner to advanced cybersecurity courses including ethical hacking, SOC operations, cloud security, and more.",
-              },
-              {
-                q: "Are the courses online?",
-                a: "Yes! All our courses are delivered online, allowing you to learn from anywhere at your own pace.",
-              },
-              {
-                q: "Do I get a certificate?",
-                a: "Yes, you'll receive industry-recognized certifications upon completing each course or pathway.",
-              },
-              {
-                q: "Is there career support?",
-                a: "Absolutely! We provide resume building, mock interviews, and internship assistance.",
-              },
-            ].map((faq, index) => (
-              <Card key={index} variant="glass">
-                <CardContent className="p-6">
-                  <h3 className="font-heading font-semibold text-foreground mb-2">
-                    {faq.q}
-                  </h3>
-                  <p className="text-muted-foreground text-sm">{faq.a}</p>
-                </CardContent>
-              </Card>
-            ))}
+      <section className="section-padding">
+        <div className="container-narrow">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-accent/10 border border-accent/30 text-accent text-xs font-mono uppercase tracking-wider mb-4">
+              <HelpCircle className="h-3 w-3" />
+              FAQ
+            </div>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-muted-foreground">
+              Have questions? Check out our FAQ or reach out directly!
+            </p>
           </div>
+
+          <Accordion type="single" collapsible className="space-y-3">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="bg-card border border-border rounded-xl px-6 data-[state=open]:border-primary/30"
+              >
+                <AccordionTrigger className="text-left font-heading font-semibold text-foreground hover:text-primary py-5">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pb-5">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
     </div>

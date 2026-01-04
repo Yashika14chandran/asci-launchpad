@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import SectionHeading from "@/components/shared/SectionHeading";
 import {
   ArrowRight,
   Award,
@@ -11,6 +10,8 @@ import {
   Zap,
   Medal,
   BadgeCheck,
+  Terminal,
+  Trophy,
 } from "lucide-react";
 
 const certifications = [
@@ -21,7 +22,7 @@ const certifications = [
     badge: "Cyber Explorer Level",
     description:
       "For learners starting their cybersecurity journey. Covers fundamentals, basics of networks, ethical hacking introduction, and digital forensics essentials.",
-    color: "primary",
+    difficulty: "beginner",
   },
   {
     icon: Shield,
@@ -30,7 +31,7 @@ const certifications = [
     badge: "Cyber Defender Level",
     description:
       "For students ready to dive deeper into practical skills like Web VAPT, network defense, cloud security, and OSINT.",
-    color: "accent",
+    difficulty: "intermediate",
   },
   {
     icon: Code,
@@ -39,7 +40,7 @@ const certifications = [
     badge: "Cyber Sentinel Level",
     description:
       "For professionals mastering red teaming, mobile security, exploit development, and high-level offensive security.",
-    color: "primary",
+    difficulty: "advanced",
   },
   {
     icon: Zap,
@@ -48,28 +49,50 @@ const certifications = [
     badge: "Cyber Skill Booster Badge",
     description:
       "Short, skill-focused certifications covering tools like Nmap, Burp Suite, Wireshark, Linux commands, API security, and more.",
-    color: "accent",
+    difficulty: "intermediate",
+  },
+];
+
+const benefits = [
+  {
+    icon: Award,
+    title: "Industry Recognition",
+    description: "Our certifications are recognized by employers and demonstrate your expertise in cybersecurity.",
+  },
+  {
+    icon: Shield,
+    title: "Practical Skills",
+    description: "Certifications are based on hands-on assessments that prove real-world capabilities.",
+  },
+  {
+    icon: Trophy,
+    title: "Career Advancement",
+    description: "Stand out in job applications and accelerate your path to leadership roles.",
   },
 ];
 
 export default function VaultPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-b from-card/50 to-background relative overflow-hidden">
+      <section className="section-padding relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-glow opacity-40" />
+        <div className="absolute inset-0 grid-overlay opacity-20" />
+        
         {/* Decorative elements */}
-        <div className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-40 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
         
         <div className="container-wide relative z-10">
           <div className="text-center">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium tracking-wider uppercase mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-primary/10 border border-primary/30 text-primary text-xs font-mono uppercase tracking-wider mb-4">
+              <Terminal className="h-3 w-3" />
               Certifications
-            </span>
+            </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
               The <span className="text-gradient">Cyber Vault</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Earn industry-recognized certifications that validate your cybersecurity
               expertise and accelerate your career.
             </p>
@@ -78,74 +101,44 @@ export default function VaultPage() {
       </section>
 
       {/* Certifications Grid */}
-      <section className="section-padding">
+      <section className="section-padding bg-card/30 border-y border-border">
         <div className="container-wide">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {certifications.map((cert, index) => (
               <Card
                 key={index}
-                variant="gradient"
-                className="group overflow-hidden hover:shadow-xl hover:shadow-primary/10 transition-all duration-500"
+                variant="htb"
+                className="group overflow-hidden"
               >
-                <CardContent className="p-8">
+                <CardContent className="p-6 md:p-8">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-6">
                     <div className="flex items-center gap-4">
-                      <div
-                        className={`w-16 h-16 rounded-2xl ${
-                          cert.color === "primary"
-                            ? "bg-primary/10"
-                            : "bg-accent/10"
-                        } flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                      >
-                        <cert.icon
-                          className={`h-8 w-8 ${
-                            cert.color === "primary"
-                              ? "text-primary"
-                              : "text-accent"
-                          }`}
-                        />
+                      <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
+                        <cert.icon className="h-7 w-7 text-primary" />
                       </div>
                       <div>
-                        <span
-                          className={`text-xs ${
-                            cert.color === "primary"
-                              ? "text-primary"
-                              : "text-accent"
-                          } font-medium uppercase tracking-wider`}
-                        >
-                          {cert.level} Certifications
+                        <span className={`difficulty-badge difficulty-${cert.difficulty} mb-2`}>
+                          {cert.level}
                         </span>
-                        <h3 className="font-heading text-2xl font-bold text-foreground">
+                        <h3 className="font-heading text-xl font-bold text-foreground">
                           {cert.name}
                         </h3>
                       </div>
                     </div>
-                    <Medal
-                      className={`h-8 w-8 ${
-                        cert.color === "primary"
-                          ? "text-primary/50"
-                          : "text-accent/50"
-                      }`}
-                    />
+                    <Medal className="h-6 w-6 text-primary/40 group-hover:text-primary transition-colors" />
                   </div>
 
                   {/* Description */}
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                  <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
                     {cert.description}
                   </p>
 
                   {/* Certificate Badge */}
-                  <div
-                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${
-                      cert.color === "primary"
-                        ? "bg-primary/10 text-primary"
-                        : "bg-accent/10 text-accent"
-                    }`}
-                  >
-                    <BadgeCheck className="h-5 w-5" />
-                    <span className="font-medium text-sm">
-                      Certificate: {cert.badge}
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 border border-primary/20">
+                    <BadgeCheck className="h-4 w-4 text-primary" />
+                    <span className="font-mono text-primary text-sm">
+                      {cert.badge}
                     </span>
                   </div>
                 </CardContent>
@@ -156,44 +149,31 @@ export default function VaultPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="section-padding bg-card/30">
+      <section className="section-padding">
         <div className="container-wide">
-          <SectionHeading
-            tag="Benefits"
-            title="Why Get Certified?"
-            subtitle="ASCI certifications are designed to validate your skills and boost your career prospects."
-          />
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-accent/10 border border-accent/30 text-accent text-xs font-mono uppercase tracking-wider mb-4">
+              Benefits
+            </div>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Why Get Certified?
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              ASCI certifications are designed to validate your skills and boost your career prospects.
+            </p>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: Award,
-                title: "Industry Recognition",
-                description:
-                  "Our certifications are recognized by employers and demonstrate your expertise in cybersecurity.",
-              },
-              {
-                icon: Shield,
-                title: "Practical Skills",
-                description:
-                  "Certifications are based on hands-on assessments that prove real-world capabilities.",
-              },
-              {
-                icon: Zap,
-                title: "Career Advancement",
-                description:
-                  "Stand out in job applications and accelerate your path to leadership roles.",
-              },
-            ].map((benefit, index) => (
-              <Card key={index} variant="glow" className="text-center">
+            {benefits.map((benefit, index) => (
+              <Card key={index} variant="htb" className="text-center group">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                    <benefit.icon className="h-8 w-8 text-primary" />
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
+                    <benefit.icon className="h-7 w-7 text-primary" />
                   </div>
-                  <h3 className="font-heading font-semibold text-xl text-foreground mb-3">
+                  <h3 className="font-heading font-semibold text-lg text-foreground mb-3">
                     {benefit.title}
                   </h3>
-                  <p className="text-muted-foreground">{benefit.description}</p>
+                  <p className="text-muted-foreground text-sm">{benefit.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -202,16 +182,17 @@ export default function VaultPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding">
-        <div className="container-narrow text-center">
+      <section className="section-padding bg-card/30 border-t border-border relative overflow-hidden">
+        <div className="absolute inset-0 bg-hero-glow opacity-30" />
+        <div className="container-narrow relative z-10 text-center">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
             Start Your Certification Journey
           </h2>
-          <p className="text-xl text-muted-foreground mb-10">
+          <p className="text-lg text-muted-foreground mb-10">
             Explore our skill pathways and earn certifications that matter.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="xl" asChild>
+            <Button variant="htb" size="xl" asChild>
               <Link to="/skills" className="gap-2">
                 View Skill Pathways
                 <ArrowRight className="h-5 w-5" />

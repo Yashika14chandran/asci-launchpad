@@ -57,17 +57,23 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        asci: {
-          navy: "hsl(var(--asci-navy))",
-          teal: "hsl(var(--asci-teal))",
-          green: "hsl(var(--asci-green))",
-          cyan: "hsl(var(--asci-cyan))",
-          light: "hsl(var(--asci-light))",
+        htb: {
+          dark: "hsl(var(--htb-dark))",
+          darker: "hsl(var(--htb-darker))",
+          card: "hsl(var(--htb-card))",
+          "card-hover": "hsl(var(--htb-card-hover))",
+          neon: "hsl(var(--htb-neon))",
+          green: "hsl(var(--htb-green))",
+          teal: "hsl(var(--htb-teal))",
+          border: "hsl(var(--htb-border))",
+          text: "hsl(var(--htb-text))",
+          muted: "hsl(var(--htb-muted))",
         },
       },
       fontFamily: {
-        heading: ['Orbitron', 'sans-serif'],
+        heading: ['Space Grotesk', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -90,16 +96,26 @@ export default {
         "border-beam": {
           "100%": { offsetDistance: "100%" },
         },
+        "pulse-glow": {
+          "0%, 100%": { 
+            boxShadow: "0 0 20px hsl(79 100% 47% / 0.3)",
+          },
+          "50%": { 
+            boxShadow: "0 0 40px hsl(79 100% 47% / 0.5)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         shimmer: "shimmer 2s linear infinite",
         "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "cyber-grid": "linear-gradient(hsl(var(--border)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px)",
+        "cyber-grid": "linear-gradient(hsl(var(--border) / 0.5) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border) / 0.5) 1px, transparent 1px)",
+        "hero-glow": "radial-gradient(ellipse 80% 50% at 50% -20%, hsl(79 100% 47% / 0.15), transparent)",
       },
     },
   },
