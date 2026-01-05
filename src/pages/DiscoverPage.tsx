@@ -221,11 +221,7 @@ export default function DiscoverPage() {
                 <div className="grid md:grid-cols-5 gap-0">
                   {/* Image */}
                   <div className="md:col-span-2 relative">
-                    <img
-                      src={founderPortrait}
-                      alt="Yashika Chandran - Founder & CEO"
-                      className="w-full h-full object-cover min-h-[300px]"
-                    />
+                    
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/80 hidden md:block" />
                   </div>
 

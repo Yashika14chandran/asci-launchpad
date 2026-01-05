@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Terminal, Mail, MapPin, Phone, Linkedin, Twitter, Youtube, Github } from "lucide-react";
+import logo from '../../assets/logo.svg';
 
 const footerLinks = {
   explore: [
@@ -26,19 +27,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
-                <Terminal className="h-5 w-5 text-primary" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-heading font-bold text-lg tracking-wider text-foreground">
-                  ASCI ZEN
-                </span>
-                <span className="text-[10px] text-primary font-mono tracking-widest uppercase">
-                  ACADEMY
-                </span>
-              </div>
-            </Link>
+         
+<Link to="/" className="flex items-center gap-4 mb-8">
+  {/* Increased container size to w-20 h-20 (64px) */}
+
+  <div className="flex flex-col">
+    <span className="font-heading font-bold text-2xl tracking-wider text-foreground">
+      ASCIZEN
+    </span>
+  </div>
+</Link>
+
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
               Empowering the next generation of cyber defenders through
               expert-led training, real-world skills, and industry-recognized

@@ -23,18 +23,13 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300">
-                <Terminal className="h-5 w-5 text-primary" />
-              </div>
-              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
+            
             <div className="flex flex-col">
               <span className="font-heading font-bold text-lg tracking-wider text-foreground">
-                ASCI
+                ASCIZEN
               </span>
               <span className="text-[10px] text-primary font-mono tracking-widest uppercase">
-                ACADEMY
+                
               </span>
             </div>
           </Link>
