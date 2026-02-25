@@ -23,16 +23,22 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            
-            <div className="flex flex-col">
-              <span className="font-heading font-bold text-lg tracking-wider text-foreground">
-                ASCIZEN
-              </span>
-              <span className="text-[10px] text-primary font-mono tracking-widest uppercase">
-                
-              </span>
-            </div>
-          </Link>
+  {/* The Actual Logo Image */}
+  <img 
+    src="logo.png" 
+    alt="Ascizen Logo" 
+    className="h-8 w-8 object-contain" 
+  />
+
+  <div className="flex flex-col">
+    <span className="font-heading font-bold text-lg tracking-wider text-foreground">
+      ASCIZEN
+    </span>
+    <span className="text-[10px] text-primary font-mono tracking-widest uppercase">
+      Advanced Security & Cyber Intelligence
+    </span>
+  </div>
+</Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">

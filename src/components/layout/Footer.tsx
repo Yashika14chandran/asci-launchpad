@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Terminal, Mail, MapPin, Phone, Linkedin, Twitter, Youtube, Github } from "lucide-react";
-import logo from '../../assets/logo.svg';
+import { Terminal, Mail, MapPin, Phone, Linkedin, Twitter, Youtube, Github, Instagram } from "lucide-react";
+import logo from 'public/logo.png';
 
 const footerLinks = {
   explore: [
@@ -28,13 +28,22 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-1">
          
-<Link to="/" className="flex items-center gap-4 mb-8">
-  {/* Increased container size to w-20 h-20 (64px) */}
+ {/* Logo Container */}
+<Link to="/" className="flex items-center gap-4 mb-8 group">
+  {/* w-20 h-20 = 80px square container */}
+  <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center overflow-hidden">
+    <img 
+      src="/public/logo.png" 
+      alt="ASCIZEN Logo" 
+      className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110" 
+    />
+  </div>
 
   <div className="flex flex-col">
     <span className="font-heading font-bold text-2xl tracking-wider text-foreground">
       ASCIZEN
     </span>
+    {/* Optional: Add a small tagline here if your footer has one */}
   </div>
 </Link>
 
@@ -45,10 +54,11 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { icon: Linkedin, href: "#" },
-                { icon: Twitter, href: "#" },
-                { icon: Youtube, href: "#" },
-                { icon: Github, href: "#" },
+               { icon: Linkedin, href: "https://www.linkedin.com/company/ascizen" },
+  { icon: Instagram, href: "https://www.instagram.com/ascizen" }, // Added Instagram
+  { icon: Twitter, href: "https://twitter.com/ascizen" },
+  { icon: Youtube, href: "https://www.youtube.com/@ascizen" },
+  { icon: Github, href: "https://github.com/ascizen" },
               ].map(({ icon: Icon, href }, index) => (
                 <a
                   key={index}

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import founderPortrait from "@/assets/founder-portrait.jpg";
+import GallerySection from "@/components/sections/GallerySection"
 import ethicalHacking from "@/assets/ethical-hacking.jpg";
 import {
   ArrowRight,
@@ -265,6 +266,8 @@ export default function DiscoverPage() {
           </div>
         </div>
       </section>
+
+      <GallerySection />
 
       {/* CTA */}
       <section className="section-padding bg-card/30 border-t border-border">
