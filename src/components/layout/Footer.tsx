@@ -33,7 +33,7 @@ export default function Footer() {
   {/* w-20 h-20 = 80px square container */}
   <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center overflow-hidden">
     <img 
-      src="/public/logo.png" 
+      src="logo.png" 
       alt="ASCIZEN Logo" 
       className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110" 
     />
@@ -138,7 +138,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2025 ASCI Academy. All rights reserved.
+            © 2025 - 2026 ASCIZEN Academy. All rights reserved.
           </p>
           <div className="flex items-center gap-2 text-sm">
             <span className="font-mono text-primary">$</span>

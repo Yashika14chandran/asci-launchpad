@@ -223,6 +223,12 @@ export default function DiscoverPage() {
                   {/* Image */}
                   <div className="md:col-span-2 relative">
                     
+                     <img 
+      src="gallery/1.jpeg" 
+      alt="ASCIZEN Founder" 
+      className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110" 
+    />
+
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/80 hidden md:block" />
                   </div>
 
