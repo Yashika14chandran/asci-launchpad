@@ -5,13 +5,11 @@ import logo from 'public/logo.png';
 const footerLinks = {
   explore: [
     { name: "Home", path: "/" },
-    { name: "Discover ASCI", path: "/discover" },
-    { name: "Why Choose Us", path: "/why" },
+
   ],
   programs: [
-    { name: "Skill Pathways", path: "/skills" },
-    { name: "Certifications", path: "/vault" },
-    { name: "Blog", path: "/blog" },
+    { name: "Training", path: "/training" },
+    { name: "Services", path: "/services" },
   ],
   support: [
     { name: "Contact Us", path: "/contact" },

@@ -121,7 +121,7 @@ function TrackCard({ icon: Icon, level, name, description, courses, difficulty, 
   );
 }
 
-export default function SkillsPage() {
+export default function TrainingPage() {
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
@@ -136,7 +136,7 @@ export default function SkillsPage() {
               Learning Paths
             </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              ASCI <span className="text-gradient">Skill Pathways</span>
+              ASCIZEN <span className="text-gradient">Skill Pathways</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Progressive learning tracks designed to take you from curious beginner to

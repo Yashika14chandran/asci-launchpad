@@ -111,7 +111,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 bg-hero-glow opacity-40" />
@@ -127,7 +127,7 @@ export default function ContactPage() {
               Get in <span className="text-gradient">Touch</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Get in touch with ASCI Academy to start your cybersecurity
+              Get in touch with ASCIZEN Academy to start your cybersecurity
               journey. We're here to help you every step of the way.
             </p>
           </div>

@@ -43,7 +43,7 @@ export default function DiscoverPage() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-primary/10 border border-primary/30 text-primary text-xs font-mono uppercase tracking-wider mb-4">
               <Terminal className="h-3 w-3" />
-              Discover ASCI
+              Discover ASCIZEN
             </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
               The World Around <span className="text-gradient">ASCI</span>
